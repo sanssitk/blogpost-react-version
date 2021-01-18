@@ -1,0 +1,30 @@
+.post .body>a {
+    text-decoration: none;
+    padding: 4px 8px;
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+    color: dodgerblue;
+}
+
+.post .body>a:hover {    
+    color: white;
+    background-color: dodgerblue;
+}
+
+.post .body .post__Content #post__title{  
+    text-align: center;
+    color: dodgerblue;
+    margin-top: 8px;
+}
+.post .body .post__Content #post__content{  
+    margin-top: 8px;
+    height: auto;
+}
+.post .body .post__Content #post__date{  
+    font-size: 1rem;
+    color:rgb(190, 190, 190);
+    padding: 12px 0;
+    border-top: 1px solid rgb(240, 240, 240);
+    border-bottom: 1px solid rgb(240, 240, 240);
+    margin: 24px 0;
+}

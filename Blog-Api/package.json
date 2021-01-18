@@ -1,0 +1,19 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "blog server",
+  "main": "server.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "pusher": "^4.0.2"
+  }
+}
