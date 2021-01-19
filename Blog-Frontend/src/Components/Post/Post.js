@@ -20,8 +20,16 @@ function Post() {
       .catch((err) => err);
   }, [id]);
 
-  const handleClick = (id) => {
-    console.log('Clicked')   
+  const handleClick = (e, id) => {
+    e.preventDefault();
+    axios
+    .delete(`/api/posts/${id}`)
+    .then((res) => {
+      setPost(res.data);
+      setLoading(false);
+    })
+    .catch((err) => err);
+    window.location.replace("/");
   }
 
   return (
@@ -36,7 +44,7 @@ function Post() {
       <div className="body">
         <div className="post__Icons">
           <Link to="/">Back</Link>
-          <div className="post__delete" onClick={handleClick(id)}>
+          <div className="post__delete" onClick={e => handleClick(e, id)}>
             <DeleteIcon style={{ fontSize: 36 }} />
           </div>
         </div>

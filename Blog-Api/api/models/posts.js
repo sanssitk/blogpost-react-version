@@ -5,10 +5,10 @@ export const get = () => {
   return readData();
 };
 
-export const getIndividualBlog = (postId) => {  
+export const getIndividualBlog = (postId) => {
   const posts = readData();
   const foundPost = posts.find((post) => post.id == postId);
-  return (foundPost);
+  return foundPost;
 };
 
 export const add = (newPost) => {
@@ -19,13 +19,14 @@ export const add = (newPost) => {
 
 export const deleteIndividualBlog = (postId) => {
   const posts = readData();
-  const deletePost = posts.filter(post => {
+  const selectPost = posts.filter((post) => {
     return post.id == postId;
   })[0];
-  const index = posts.indexOf(deletePost);
+  const index = posts.indexOf(selectPost);
   posts.splice(index, 1);
-  // response.json({ message: `User ${contactId} deleted.`});
-}
+  storeData(posts);
+  return posts; 
+};
 
 const readData = () => {
   const rawdata = fs.readFileSync(PATH);

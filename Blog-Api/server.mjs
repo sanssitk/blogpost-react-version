@@ -61,15 +61,13 @@ app.get("/api/posts/:post_id", (req, res) => {
 
 //Delete blog from existing
 app.delete('/api/posts/:post_id', (req, res) => {  
-  const postId =  req.params.post_id;
-  console.log(postId)  
-  
-  // const foundPost = deleteIndividualBlog(postId);
-  // if (foundPost) {
-  //   res.status(200).redirect("/")
-  // } else {
-  //   res.status(404).send("Not Found")
-  // }  
+  const postId =  req.params.post_id;  
+  const deletePost = deleteIndividualBlog(postId);
+  if (deletePost) {
+    res.send("Ok")
+  } else {
+    res.status(404).send("Not Found")
+  }     
 });
 
 // Upload -- posting datas and files
