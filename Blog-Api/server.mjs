@@ -10,7 +10,7 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
 // controllers
-import { get, getIndividualBlog, add } from "./api/models/posts.js";
+import { get, getIndividualBlog, add, deleteIndividualBlog } from "./api/models/posts.js";
 
 // used for uploading files and form datas
 import multer from "multer";
@@ -55,10 +55,24 @@ app.get("/api/posts/:post_id", (req, res) => {
   if (foundPost) {
     res.status(200).send(foundPost);
   } else {
-    res.status(404).send("No found");
+    res.status(404).send("Not found");
   }
 });
-/// Upload -- posting datas and files
+
+//Delete blog from existing
+app.delete('/api/posts/:post_id', (req, res) => {  
+  const postId =  req.params.post_id;
+  console.log(postId)  
+  
+  // const foundPost = deleteIndividualBlog(postId);
+  // if (foundPost) {
+  //   res.status(200).redirect("/")
+  // } else {
+  //   res.status(404).send("Not Found")
+  // }  
+});
+
+// Upload -- posting datas and files
 app.post("/api/posts", upload.single("post_image"), (req, res) => {
   console.log(req.file);
   console.log(req.body);
@@ -73,6 +87,8 @@ app.post("/api/posts", upload.single("post_image"), (req, res) => {
   add(newPost);
   res.status(201).send(newPost);
 });
+
+
 
 // listener/////////////////////////////////////////////
 app.listen(port, () => console.log(`listening on localhost:${port}`));

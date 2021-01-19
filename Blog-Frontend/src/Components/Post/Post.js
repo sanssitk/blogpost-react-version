@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios, { API_BASE_URL } from "../../axios";
+import DeleteIcon from "@material-ui/icons/Delete";
 import "./Post.css";
 
 function Post() {
   const { id } = useParams();
   const [post, setPost] = useState([]);
-  const [ , setLoading] = useState(false);
+  const [, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -16,8 +17,12 @@ function Post() {
         setPost(res.data);
         setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => err);
   }, [id]);
+
+  const handleClick = (id) => {
+    console.log('Clicked')   
+  }
 
   return (
     <div className="post">
@@ -27,8 +32,15 @@ function Post() {
           backgroundImage: `url(${API_BASE_URL}/${post.post_image})`,
         }}
       ></header>
+
       <div className="body">
-        <Link to="/">Back</Link>
+        <div className="post__Icons">
+          <Link to="/">Back</Link>
+          <div className="post__delete" onClick={handleClick(id)}>
+            <DeleteIcon style={{ fontSize: 36 }} />
+          </div>
+        </div>
+
         <div className="post__Content">
           <h1 id="post__title">{post.title}</h1>
 

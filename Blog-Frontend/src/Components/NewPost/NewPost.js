@@ -3,15 +3,18 @@ import "./NewPost.css";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
 
+const DefaultPostImage =
+  "https://images.unsplash.com/photo-1576815033564-aa6f79d79d04?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+
 function NewPost() {
   const initialPost = {
     title: "",
     content: "",
     post_image: null,
-    imageSrc: "https://images.unsplash.com/photo-1576815033564-aa6f79d79d04?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    imageSrc: DefaultPostImage,
   };
 
-    const blogAPI = (url = "") => {
+  const blogAPI = (url = "") => {
     return {
       getAll: () => axios.get(url),
       create: (url, newData) => axios.post(url, newData),
@@ -42,7 +45,7 @@ function NewPost() {
       };
       reader.readAsDataURL(imageFile);
     } else {
-      setValues({ ...values, post_image: null, imageSrc: "" });
+      setValues({ ...values, post_image: null, imageSrc: DefaultPostImage });
     }
   };
 
@@ -88,7 +91,9 @@ function NewPost() {
     <div className="newpost">
       <header
         className="profile__heading"
-        style={{backgroundImage: values.imageSrc}}
+        style={{
+          backgroundImage: `url(${values.imageSrc})`,
+        }}
       >
         <h1>New Posts</h1>
         <h3>Lets add a new blog post!</h3>

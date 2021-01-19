@@ -1,12 +1,33 @@
-.post .body>a {
+.post__Icons{
+    display: flex;
+    align-items: center;
+}
+.post .body .post__Icons >a {
+    margin-right: 16px;
     text-decoration: none;
     padding: 4px 8px;
     border: 1px solid dodgerblue;
     border-radius: 5px;
-    color: dodgerblue;
+    color: dodgerblue;    
 }
 
-.post .body>a:hover {    
+.post .body .post__Icons>a:hover {    
+    color: white;
+    background-color: dodgerblue;
+}
+.post__delete {
+    display: flex;
+    align-items: center;
+}
+
+.post .body .post__delete .MuiSvgIcon-root {  
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+    color: dodgerblue;    
+    cursor: pointer;
+    padding: 3px;
+}
+.post .body .post__delete .MuiSvgIcon-root:hover {
     color: white;
     background-color: dodgerblue;
 }
@@ -28,3 +49,4 @@
     border-bottom: 1px solid rgb(240, 240, 240);
     margin: 24px 0;
 }
+

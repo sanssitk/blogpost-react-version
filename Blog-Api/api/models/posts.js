@@ -17,6 +17,16 @@ export const add = (newPost) => {
   storeData(currentPosts);
 };
 
+export const deleteIndividualBlog = (postId) => {
+  const posts = readData();
+  const deletePost = posts.filter(post => {
+    return post.id == postId;
+  })[0];
+  const index = posts.indexOf(deletePost);
+  posts.splice(index, 1);
+  // response.json({ message: `User ${contactId} deleted.`});
+}
+
 const readData = () => {
   const rawdata = fs.readFileSync(PATH);
   const obj = JSON.parse(rawdata);

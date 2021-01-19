@@ -35,14 +35,14 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.MuiSvgIcon-root {    
+.homepage .profile__heading .MuiSvgIcon-root {    
     position: fixed;
     bottom: 70px;
     right: 60px;    
     color: grey;    
     cursor: pointer;
 }
-.MuiSvgIcon-root:hover {
+.homepage .profile__heading .MuiSvgIcon-root:hover {
     color: darkgray;
 }
 
