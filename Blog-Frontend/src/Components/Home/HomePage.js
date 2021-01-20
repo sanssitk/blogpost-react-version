@@ -7,8 +7,8 @@ function HomePage() {
   return (
     <div className="homepage">
       <header className="profile__heading">
-        <Link to="/NewPost">
-          <AddBoxIcon style={{ fontSize: 80}} />
+        <Link to="/NewPost" style={{ backgroundColor: "#FFF"}}>
+          <AddBoxIcon style={{ fontSize: 80} } />
         </Link>
         <img src="sanjay.jpg" alt="profileImage" />
         <h1>Sanjay Shrestha</h1>

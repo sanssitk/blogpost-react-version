@@ -17,7 +17,7 @@ const update = (id, data) => {
 };
 
 const remove = (id) => {
-  return axios.delete(`/api/posts/${id}`);
+  return axios.delete(`/api/posts/${id}`);  
 };
 
 const removeAll = () => {
