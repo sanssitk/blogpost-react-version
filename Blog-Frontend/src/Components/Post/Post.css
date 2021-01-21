@@ -3,12 +3,16 @@
     align-items: center;
 }
 .post .body .post__Icons >a {
-    margin-right: 16px;
+    /* margin-right: 16px; */
     text-decoration: none;
     padding: 4px 8px;
     border: 1px solid dodgerblue;
     border-radius: 5px;
     color: dodgerblue;    
+}
+
+.post__Icons > a , .post__delete > svg{
+    margin-right: 8px;
 }
 
 .post .body .post__Icons>a:hover {    
