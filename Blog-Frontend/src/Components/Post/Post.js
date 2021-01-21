@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import axios, { API_BASE_URL } from "../../axios";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import "./Post.css";
 
 function Post() {
@@ -20,17 +21,29 @@ function Post() {
       .catch((err) => err);
   }, [id]);
 
-  const handleClick = (e, id) => {
+  const handleDelete = (e, id) => {
     e.preventDefault();
     axios
-    .delete(`/api/posts/${id}`)
-    .then((res) => {
-      setPost(res.data);
-      setLoading(false);
-    })
-    .catch((err) => err);
-    window.location.replace("/");
-  }
+      .delete(`/api/posts/${id}`)
+      .then((res) => {
+        setPost(res.data);
+        setLoading(false);
+      })
+      .catch((err) => err);
+    // window.location.replace("/");
+  };
+  const handleEdit = (e, id) => {
+    e.preventDefault();
+    ///////////// Continue from here
+    axios
+      .put(`/api/posts/${id}`)
+      .then((res) => {
+        setPost(res.data);
+        setLoading(false);
+      })
+      .catch((err) => err);
+    // window.location.replace("/");
+  };
 
   return (
     <div className="post">
@@ -44,8 +57,11 @@ function Post() {
       <div className="body">
         <div className="post__Icons">
           <Link to="/">Back</Link>
-          <div className="post__delete" onClick={e => handleClick(e, id)}>
+          <div className="post__delete" onClick={(e) => handleDelete(e, id)}>
             <DeleteIcon style={{ fontSize: 36 }} />
+          </div>
+          <div className="post__delete" onClick={(e) => handleEdit(e, id)}>
+            <EditIcon style={{ fontSize: 36 }} />
           </div>
         </div>
 
