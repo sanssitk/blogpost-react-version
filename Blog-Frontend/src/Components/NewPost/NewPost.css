@@ -8,7 +8,7 @@
 
 input, textarea{
     border: none;
-    outline: none;    
+    outline: none;   
 }
 .newpost .body .post__Content {
     display: flex;

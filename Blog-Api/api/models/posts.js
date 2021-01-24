@@ -17,6 +17,17 @@ export const add = (newPost) => {
   storeData(currentPosts);
 };
 
+export const put = (id, newData) => {
+  const posts = readData();
+  const foundPost = posts.find((post) => { return post.id == id});  
+  if (!foundPost){
+    throw new Error(`Id '${id}' not found`)
+  }
+  Object.assign(foundPost, newData)
+  storeData(posts)
+  return foundPost;
+};
+
 export const deleteIndividualBlog = (postId) => {
   const posts = readData();
   const selectPost = posts.filter((post) => {
