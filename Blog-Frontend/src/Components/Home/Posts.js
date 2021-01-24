@@ -24,7 +24,7 @@ function Posts() {
     axios
     .delete(`/api/posts/${id}`)
     .then((res) => {
-      setPosts(res.data);
+      setPosts(res.data);      
       setLoading(false);
     })
     .catch((err) => err);
@@ -45,6 +45,7 @@ function Posts() {
               backgroundImage: `url(${API_BASE_URL}/${data.post_image})`,
             }}
           ></div>
+          
           <div className="post__Content">
             <p id="post__date">
               {new Date(parseInt(data.added_date)).toDateString()}

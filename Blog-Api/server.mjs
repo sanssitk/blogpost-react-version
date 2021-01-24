@@ -10,7 +10,13 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
 // controllers
-import { get, getIndividualBlog, add, deleteIndividualBlog } from "./api/models/posts.js";
+import {
+  get,
+  getIndividualBlog,
+  add,
+  deleteIndividualBlog,
+  put,
+} from "./api/models/posts.js";
 
 // used for uploading files and form datas
 import multer from "multer";
@@ -60,33 +66,45 @@ app.get("/api/posts/:post_id", (req, res) => {
 });
 
 //Delete blog from existing
-app.delete('/api/posts/:post_id', (req, res) => {  
-  const postId =  req.params.post_id;  
+app.delete("/api/posts/:post_id", (req, res) => {
+  const postId = req.params.post_id;
   const deletePost = deleteIndividualBlog(postId);
   if (deletePost) {
-    res.send("Ok")
+    res.send("Ok");
   } else {
-    res.status(404).send("Not Found")
-  }     
+    res.status(404).send("Not Found");
+  }
 });
 
 // Upload -- posting datas and files
 app.post("/api/posts", upload.single("post_image"), (req, res) => {
-  console.log(req.file);
-  console.log(req.body);
-  
   const newPost = {
     id: `${Date.now()}`,
     title: req.body.title,
     content: req.body.content,
-    post_image: req.file.path.replace("\\", "/"),    
+    post_image: req.file.path.replace("\\", "/"),
     added_date: `${Date.now()}`,
   };
   add(newPost);
   res.status(201).send(newPost);
 });
 
-
+app.put("/api/posts/:post_id", upload.single("post_image"), (req, res) => {
+  const user = req.params.post_id;
+  if (!req.body) {
+    return res.send("nothing saved");
+  } else {
+    const newPost = {
+      id: user,
+      title: req.body.title,
+      content: req.body.content,
+      post_image: req.file.path.replace("\\", "/"),
+      added_date: user,
+    };
+    put(user, newPost);
+    res.status(201).send(newPost);
+  }
+});
 
 // listener/////////////////////////////////////////////
 app.listen(port, () => console.log(`listening on localhost:${port}`));

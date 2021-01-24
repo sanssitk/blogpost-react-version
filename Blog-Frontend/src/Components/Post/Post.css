@@ -1,77 +1,56 @@
-.post__Icons{
+/************************************** ICONS ****************************/
+.post__Icons {
     display: flex;
-    align-items: center;
-}
-.post .body .post__Icons >a {
-    /* margin-right: 16px; */
-    text-decoration: none;
-    padding: 4px 8px;
-    border: 1px solid dodgerblue;
-    border-radius: 5px;
-    color: dodgerblue;    
+    align-items: center;      
 }
 
-.post__Icons > a , .post__delete > svg{
+.icons{
+    color: dodgerblue;
+    border: 2px solid dodgerblue;
+    border-radius: 5px;
     margin-right: 8px;
+    padding: 3px 5px; 
+    color: dodgerblue;
+    cursor: pointer;  
+    transition: all 400ms ease;  
 }
 
-.post .body .post__Icons>a:hover {    
+.icons:hover{
+    transform: scale(1.2);
     color: white;
     background-color: dodgerblue;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, .3);
 }
-.post__delete {
+
+.icons > .MuiSvgIcon-root {     
+    font-size: 20px;    
+}
+
+/************************************** PAGE ****************************/
+.title__Container {
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
 }
 
-.post .body .post__delete .MuiSvgIcon-root {  
-    border: 1px solid dodgerblue;
-    border-radius: 5px;
-    color: dodgerblue;    
-    cursor: pointer;
-    padding: 3px;
-}
-.post .body .post__delete .MuiSvgIcon-root:hover {
-    color: white;
-    background-color: dodgerblue;
-}
-
-.post .body .post__Content #post__title{  
+.post .body .post__Content #post__title {
     text-align: center;
     color: dodgerblue;
     margin-top: 8px;
+    width: 100%;
 }
-.post .body .post__Content #post__content{  
+
+.post .body .post__Content #post__content {
     margin-top: 8px;
     height: auto;
+    flex: 1;
 }
-.post .body .post__Content #post__date{  
+
+.post .body .post__Content #post__date {
     font-size: 1rem;
-    color:rgb(190, 190, 190);
+    color: rgb(190, 190, 190);
     padding: 12px 0;
     border-top: 1px solid rgb(240, 240, 240);
     border-bottom: 1px solid rgb(240, 240, 240);
     margin: 24px 0;
 }
-
-/***************************************************** Editing */
-button{
-    outline: none;
-    margin-right: 5px;
-    text-decoration: none;
-    padding: 4px 8px;
-    border: 1px solid dodgerblue;
-    border-radius: 5px;
-    color: dodgerblue
-}
-
-.update__title > input{
-    padding: 10px;
-    width: 100%;
-    border: 1px solid gray;
-    border-radius: 10px;
-    color: black;
-    font-size: 1rem;
-}
-.update__content{}
-              

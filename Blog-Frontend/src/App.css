@@ -5,7 +5,7 @@
 }
 
 .app{
-    background-color: gainsboro;
+    background-color: gainsboro;    
 }
 
 /* Headering *******************************************************************/
@@ -64,12 +64,10 @@
     margin: 0 auto;
     padding: 40px 0;
 }
-
 a {
     text-decoration: none;
     color: black;
 }
-
 
 .post__Container {
     cursor: pointer;
@@ -81,12 +79,12 @@ a {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 16px;
-    transition: all 0.2s ease;
+    transition: all 0.5s ease;
 }
 
 .post__Container:hover {
-    transform: translate3d(0, -5px, 0);
-    box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.25);
+    transform: translate3d(15px, -8px, 0);    
+    box-shadow: 0 0.8rem 1.5rem 0 rgba(0, 0, 0, 0.50);
 }
 
 .post__Image {
@@ -153,4 +151,6 @@ footer {
     width: 100%;
     padding: 40px 0;
     text-align: center;
+    position: fixed;
+    bottom: 0;    
 }

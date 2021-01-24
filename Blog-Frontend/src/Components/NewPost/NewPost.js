@@ -29,7 +29,7 @@ function NewPost() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+    setValues({ ...values, [name]: value });    
   };
 
   const showPreview = (e) => {
@@ -59,17 +59,17 @@ function NewPost() {
   };
 
   const addOrEdit = (formData, onSuccess) => {
+    console.log(formData)
     blogAPI()
       .create("/api/posts", formData)
-      .then((res) => onSuccess())
+      .then((res) => window.location.replace("/"))
       .catch((e) => console.log(e));
   };
 
   const resetForm = () => {
     setValues(initialPost);
     document.getElementById("post_image").value = null;
-    setErrors({});
-    window.location.replace("/");
+    setErrors({});    
   };
 
   const handleFileSubmit = (e) => {
@@ -79,7 +79,6 @@ function NewPost() {
       formData.append("title", values.title);
       formData.append("content", values.content);
       formData.append("post_image", values.post_image);
-
       addOrEdit(formData, resetForm);
     }
   };
@@ -105,8 +104,9 @@ function NewPost() {
           <form autoComplete="off" noValidate onSubmit={handleFileSubmit}>
             <input
               id="post__title"
+              autoFocus
               name="title"
-              type="text"
+              type="text"              
               placeholder="title here.."
               value={values.title}
               onChange={handleInputChange}
@@ -124,8 +124,7 @@ function NewPost() {
               className={applyErrorClass("content")}
             />
 
-            <div>
-              {/* <img src={values.imageSrc} alt="lable" /> */}
+            <div>              
               <label htmlFor="file">Choose Image</label>
               <input
                 type="file"

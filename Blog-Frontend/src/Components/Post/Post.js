@@ -3,13 +3,17 @@ import { Link, Redirect, useParams } from "react-router-dom";
 import axios, { API_BASE_URL } from "../../axios";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import SaveIcon from "@material-ui/icons/Save";
 import "./Post.css";
 
 function Post() {
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const [, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  // const [editable, setEditable] = useState(false);
 
+  /////////////////////////////////////////////////// Loading blog
   useEffect(() => {
     setLoading(true);
     axios
@@ -21,32 +25,24 @@ function Post() {
       .catch((err) => err);
   }, [id]);
 
+  /////////////////////////////////////////////////// Deleting blog
   const handleDelete = (e, id) => {
     e.preventDefault();
     axios
       .delete(`/api/posts/${id}`)
-      .then((res) => {
-        setPost(res.data);
+      .then(() => {
+        // setPost(res.data);
+        // this.props.history.push("/")
         setLoading(false);
+        setSuccess(true);
       })
       .catch((err) => err);
-    // window.location.replace("/");
-  };
-  const handleEdit = (e, id) => {
-    e.preventDefault();
-    ///////////// Continue from here
-    axios
-      .put(`/api/posts/${id}`)
-      .then((res) => {
-        setPost(res.data);
-        setLoading(false);
-      })
-      .catch((err) => err);
-    // window.location.replace("/");
   };
 
   return (
     <div className="post">
+      {success ? <Redirect to="/" /> : ""}
+      {/* {editable ? <Redirect to= {`Post/edit/${id}`} /> : ""} */}
       <header
         className="profile__heading"
         style={{
@@ -56,22 +52,33 @@ function Post() {
 
       <div className="body">
         <div className="post__Icons">
-          <Link to="/">Back</Link>
-          <div className="post__delete" onClick={(e) => handleDelete(e, id)}>
-            <DeleteIcon style={{ fontSize: 36 }} />
-          </div>
-          <div className="post__delete" onClick={(e) => handleEdit(e, id)}>
-            <EditIcon style={{ fontSize: 36 }} />
-          </div>
+          <Link to="/">
+            <div className="icons">Back</div>
+          </Link>
+          <Link tp="/">
+            <div className="icons" onClick={(e) => handleDelete(e, id)}>
+              <DeleteIcon  />
+            </div>
+          </Link>
+          <Link to={`/Post/edit/${id}`}>
+            <div className="icons">
+              <EditIcon  />
+            </div>
+          </Link>
         </div>
 
         <div className="post__Content">
-          <h1 id="post__title">{post.title}</h1>
+          <div className="title__Container">
+            <div id="post__title">{post.title}</div>
+          </div>
 
           <p id="post__date">
             {new Date(parseInt(post.added_date)).toDateString()}
           </p>
-          <div id="post__content">{post.content}</div>
+
+          <div className="title__Container">
+            <div id="post__content">{post.content}</div>
+          </div>
         </div>
       </div>
     </div>

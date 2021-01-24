@@ -1,5 +1,6 @@
 .bodyMain{
     position: relative;
+    margin-bottom: 24px;
 }
 
 .buttonsEditable .MuiSvgIcon-root{
@@ -10,17 +11,17 @@
     display: block;
     z-index: 100;
     position: absolute;
-    right: 20px;
-    bottom: 30px; 
+    right: 10px;
+    top: 15px;
+    transition: all 300ms ease-in; 
     
-    color: dodgerblue;
+    color: grey;
     padding: 1px;
-    border: 2px solid dodgerblue;
+    border: 2px solid grey;
     border-radius: 5px;
     cursor: pointer;
 }
 .bodyMain:hover .buttonsEditable .MuiSvgIcon-root:hover{   
     border: 2px solid rgb(161, 3, 3);
-    color: rgb(161, 3, 3);
-   
+    color: rgb(161, 3, 3);   
 }
